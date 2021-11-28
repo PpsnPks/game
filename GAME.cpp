@@ -684,19 +684,22 @@ int play_Game() {
                 p.Mode = 2;
                 draw_player(x, y);
                 Ms += 5;
-                gotoxy(18 + ((p.Hard - 1) * 4), 18 + ((p.Hard - 1) * 4)), printf(" YOU USE ITEM");
+                gotoxy(18 + ((p.Hard - 1) * 4), 18 + ((p.Hard - 1) * 4)), printf(" YOU USE ITEM"), Sleep(1000);
+                gotoxy(18 + ((p.Hard - 1) * 4), 18 + ((p.Hard - 1) * 4)), printf("             ");
             }
             if (ch == '2' && p.Storage[1] > 0) {//น้ำยาล่องหน
                 --p.Storage[1];
                 p.Mode = 3;
                 draw_player(x, y);
                 Mi += 2;
-                gotoxy(18 + ((p.Hard - 1) * 4), 18 + ((p.Hard - 1) * 4)), printf(" YOU USE ITEM");
+                gotoxy(18 + ((p.Hard - 1) * 4), 18 + ((p.Hard - 1) * 4)), printf(" YOU USE ITEM"), Sleep(1000);
+                gotoxy(18 + ((p.Hard - 1) * 4), 18 + ((p.Hard - 1) * 4)), printf("             ");
             }
             if (ch == '3' && p.Storage[2] > 0) {//HP Potion
                 --p.Storage[2];
                 p.Hp += 50;
-                gotoxy(18 + ((p.Hard - 1) * 4), 18 + ((p.Hard - 1) * 4)), printf(" YOU USE ITEM");
+                gotoxy(18 + ((p.Hard - 1) * 4), 18 + ((p.Hard - 1) * 4)), printf(" YOU USE ITEM"), Sleep(1000);
+                gotoxy(18 + ((p.Hard - 1) * 4), 18 + ((p.Hard - 1) * 4)), printf("             ");
             }
 
             fflush(stdin);
@@ -708,8 +711,6 @@ int play_Game() {
     
     setConsole(80, 30);
     clear_screen();
-    if (select_level() == 0)
-        return 555;
     play_Game();
 }
 void draw_frame_server(int line) {
@@ -881,6 +882,7 @@ int main()
     srand(time(NULL));
     Select_Server();
     login();
+    setcursor(0);
     int j;
     j = play_Game();
     while (j == 1) {
@@ -889,3 +891,4 @@ int main()
     if (j == 555)exit();
     return 0; 
 }
+
